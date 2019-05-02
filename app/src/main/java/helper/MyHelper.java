@@ -1,5 +1,6 @@
 package helper;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -24,7 +25,7 @@ public class MyHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String query = " CREATE TABLE " + tblword +
                 "("
-                + WordID + "INTEGER PRIMARY KEY AUTOINCREAMENT," +
+                + WordID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
                 Word + "TEXT,"
                 + Meaning + "TEXT" +
                 ")";
@@ -35,5 +36,15 @@ public class MyHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+
+    }
+
+    public long InsertData(String word, String meaning, SQLiteDatabase db) {
+        long id;
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Word, word);
+        contentValues.put(Meaning, meaning);
+        id = db.insert(tblword, null, contentValues);
+        return id;
     }
 }
