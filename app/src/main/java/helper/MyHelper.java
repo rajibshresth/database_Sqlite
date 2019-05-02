@@ -26,8 +26,8 @@ public class MyHelper extends SQLiteOpenHelper {
         String query = " CREATE TABLE " + tblword +
                 "("
                 + WordID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
-                Word + "TEXT,"
-                + Meaning + "TEXT" +
+                Word + " TEXT,"
+                + Meaning + " TEXT" +
                 ")";
         db.execSQL(query);
 
